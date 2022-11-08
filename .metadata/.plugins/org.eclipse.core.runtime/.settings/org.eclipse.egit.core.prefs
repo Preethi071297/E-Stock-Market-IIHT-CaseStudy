@@ -1,0 +1,4 @@
+GitRepositoriesView.GitDirectories=D\:\\training\\springorm\\.git;D\:\\training\\01-keyboard-service\\.git;D\:\\training\\springdatajpa\\.git;D\:\\training\\springcoreadvanced\\.git;D\:\\training\\01-brand-service\\.git;D\:\\training\\springmvcorm\\.git;D\:\\training\\clinicmanagementsystem-jar\\.git;D\:\\training\\mvcspring\\.git;
+GitRepositoriesView.GitDirectories.relative=D\:\\training\\springorm\\.git;D\:\\training\\01-keyboard-service\\.git;D\:\\training\\springdatajpa\\.git;D\:\\training\\springcoreadvanced\\.git;D\:\\training\\01-brand-service\\.git;D\:\\training\\springmvcorm\\.git;D\:\\training\\clinicmanagementsystem-jar\\.git;D\:\\training\\mvcspring\\.git;
+core_autoIgnoreDerivedResources=false
+eclipse.preferences.version=1

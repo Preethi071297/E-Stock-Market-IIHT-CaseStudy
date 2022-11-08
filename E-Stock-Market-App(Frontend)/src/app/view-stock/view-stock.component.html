@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <header class="header">
+        <a href="#" class="logo">
+            <!-- <i class="fas fa-heartbeat"></i> --> E-Stock Market
+        </a>
+        <nav class="navbar">
+
+            <a class="btn btn-light" style="color: black;" routerLink="/add">Home</a>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <form [formGroup]="cmpCode">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="form-label">Company Code(ISIN No.) </label>
+                <input type="text" formControlName="code" class="form-control" id="code"
+                    style="height: 40px;width:850px;font-size: 14px;" aria-describedby="emailHelp">
+            </div>
+        </form>
+        &nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary" style="height: 40px;margin-top: 18px;font-size: 14px;"
+            (click)="getCompanyByCode()">Search</button>
+    </section>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="table-responsive-sm">
+        <table class="table table-hover table-bordered bg-info  w-75 mx-auto">
+            <thead style="font-size: large;text-align: center;">
+                <tr>
+                    <th scope="col">Company Code</th>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <th scope="col">Company Name</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center; font-size: 16px;">
+                <tr class="table-primary">
+                    <td>{{cmpObj.companyCode}}</td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <td>{{cmpObj.companyName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <form [formGroup]="stkDetail">
+        <div class="form-group">
+            <h1>Select the desired Date Range</h1>
+            <label for="exampleInputEmail1" class="form-label"> From</label>
+            <input type="date" formControlName="from" class="form-control" id="from"
+                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+            <label for="exampleInputEmail1" class="form-label"> To</label>
+            <input type="date" formControlName="to" class="form-control" id="to" style="height: 40px;font-size: 14px;"
+                aria-describedby="emailHelp">
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary" style="height: 40px;margin-top: 18px;font-size: 14px;"
+            (click)="getStockByFromAndTo()">Submit</button>
+    </form>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="table-responsive-sm">
+        <table class="table table-hover table-bordered bg-info  w-75 mx-auto">
+            <thead style="font-size: large;text-align: center;">
+                <tr>
+                    <th scope="col">Stock Price</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">Time Added</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center; font-size: 16px;">
+                <tr *ngFor="let stock of stkResObj" class="table-primary">
+                    <td>{{stock.stockPrice}}</td>  
+                    <td>{{stock.dateAdded}}</td>
+                    <td>{{stock.timeAdded}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="table-responsive-sm">
+        <table class="table table-hover table-bordered bg-info  w-75 mx-auto">
+            <thead style="font-size: large;text-align: center;">
+                <tr>
+                    <th scope="col">Min Stock Price</th>
+                    <th scope="col">Max Stock Price</th>
+                    <th scope="col">Average Stock Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody style="text-align: center; font-size: 16px;">
+                <tr class="table-primary">
+                    <td>{{getMin()}}</td>
+                    <td>{{getMax()}}</td>
+                    <td>{{getAverage()}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

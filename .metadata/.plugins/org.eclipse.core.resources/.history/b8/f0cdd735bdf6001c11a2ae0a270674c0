@@ -1,0 +1,16 @@
+package com.ust.springboot.data.repos;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.ust.springboot.data.entities.Company;
+
+public interface CompanyRepository extends CrudRepository<Company, Long> {
+
+	List<Company> findByName(String name);
+
+	List<Company> findByPrice(Double price);
+	
+	List<Company> findByNameAndPrice(String name, Double price);
+}

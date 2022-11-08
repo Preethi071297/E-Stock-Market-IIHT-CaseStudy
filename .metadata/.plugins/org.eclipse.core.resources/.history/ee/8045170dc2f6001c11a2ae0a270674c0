@@ -1,0 +1,65 @@
+package com.example.companyreg.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.example.companyreg.entities.Company;
+import com.example.companyreg.repository.CompanyRepository;
+import com.example.companyreg.services.RegServices;
+
+
+@RestController
+@RequestMapping("/company")
+
+public class RegController {
+	@Autowired
+	private RegServices regService;
+	
+	@PostMapping("/register")
+    public Company addPatient(@RequestBody Company company) {
+        return regService.addCompany(company);
+    }
+	
+	@PostMapping("/addPatients")
+    public List<Company> addAllPatients(@RequestBody List<Company> patients) {
+        return patientService.addAllPatients(patients);
+    }
+
+
+    @GetMapping("/getPatientByID/{id}")
+    public Company getPatientById(@PathVariable String id) {
+        return patientService.getPatientByID(id);
+    }
+
+    
+    @PutMapping("/updatePatient")
+    public Company updatePAtient(@RequestBody Company patient) {
+        return patientService.updatePatient(patient);
+    }
+
+  
+    @DeleteMapping("/deletePatientById/{id}")
+    public String deletePatientByID(@PathVariable String id) {
+        patientService.deletePatientByID(id);
+        return "redirect:/addPatient";
+    }
+
+     
+    
+    @GetMapping("/getAll")
+    public List<Company> getAllCompanies() {
+        return patientService.getAllCompanies();
+    }
+
+}

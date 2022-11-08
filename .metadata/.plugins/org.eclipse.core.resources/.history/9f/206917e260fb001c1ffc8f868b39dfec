@@ -1,0 +1,28 @@
+package com.example.companyreg.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.companyreg.entities.Stock;
+import com.example.companyreg.repository.StockRepository;
+
+@Service
+public class StockServices {
+	@Autowired
+	private StockRepository stockRepository;
+	
+	public Stock addStock(Stock stock) {
+		return stockRepository.save(stock);
+	}
+	
+	//This method needs to be changed
+	public Stock getStockByCompanyCode(String companyCode) {
+		return stockRepository.findById(companyCode).orElse(null);
+	}
+	public void deleteCompanyByCode(String companyCode) {
+		stockRepository.deleteById(companyCode);
+	}
+	
+}
+
+

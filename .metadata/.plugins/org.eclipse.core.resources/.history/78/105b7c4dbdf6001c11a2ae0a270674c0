@@ -1,0 +1,57 @@
+package com.ust.springboot.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ust.springboot.data.entities.Company;
+import com.ust.springboot.data.repos.ProductRepository;
+
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+	
+	@Autowired
+	ProductRepository repository;
+	
+	@GetMapping
+	public Iterable<Company> getProducts()
+	{
+		return repository.findAll();
+	}
+	
+	@PostMapping
+	public Company create(@RequestBody Company product)
+	{
+		return repository.save(product);
+	}
+	
+	@PutMapping
+	public Company update(@RequestBody Company product)
+	{
+		return repository.save(product);
+	}
+	
+	@GetMapping("/{id}")
+	public Company getProduct(@PathVariable Long id)
+	{
+		Optional<Company> p=repository.findById(id);
+		Company prod=p.get();
+		return prod;
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteProduct(@PathVariable Long id)
+	{
+		repository.deleteById(id);
+	}
+
+}

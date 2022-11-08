@@ -1,0 +1,53 @@
+package com.example.companyreg.entities;
+
+import org.hibernate.validator.constraints.URL;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
+@Document(collection = "stocks")
+public class Stock {
+	@Id
+	private String companyCode;
+	@NotBlank(message = "This field is mandatory!")
+	private double stockPrice;
+	@NotBlank(message = "This field is mandatory!")
+	private String dateAdded;
+	@NotBlank(message = "This field is mandatory!")
+	private String timeAdded;
+	
+	
+	public double getStockPrice() {
+		return stockPrice;
+	}
+	public String getCompanyCode() {
+		return companyCode;
+	}
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
+	}
+	public void setStockPrice(double stockPrice) {
+		this.stockPrice = stockPrice;
+	}
+	public String getDateAdded() {
+		return dateAdded;
+	}
+	public void setDateAdded(String dateAdded) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		this.dateAdded = dateAdded ;
+	}
+	public String getTimeAdded() {
+		return timeAdded;
+	}
+	public void setTimeAdded(String timeAdded) {
+		this.timeAdded = timeAdded;
+	}
+	
+	
+}

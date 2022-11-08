@@ -1,0 +1,30 @@
+package com.example.companyreg.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.example.companyreg.entities.Company;
+import com.example.companyreg.repository.CompanyRepository;
+
+@Service
+public class RegServices {
+
+	@Autowired
+	private CompanyRepository companyRepository;
+
+	public Company addCompany(Company company) {
+		return companyRepository.save(company);
+	}
+	
+	public Company getCompanyByCode(String companyCode) {
+		return companyRepository.findById(companyCode).orElse(null);
+	}
+	
+	public List<Company> getAllPatients() {
+        return companyRepository.findAll();
+    }
+
+}

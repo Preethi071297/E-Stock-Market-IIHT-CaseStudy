@@ -1,0 +1,121 @@
+<div class="container-fluid">
+    <header class="header">
+        <a href="#" class="logo">
+            <!-- <i class="fas fa-heartbeat"></i> --> E-Stock Market
+        </a>
+
+        <nav class="navbar">
+            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addCompany" type="submit">Add
+                Company</button>
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-light" style="color: black;" routerLink="/view-company">List All Companies</a>
+
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-light" style="color: black;" routerLink="/view-stock">View Stocks</a>
+
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-light" style="color: black;" data-bs-toggle="modal" data-bs-target="#addStock" type="submit" >Add Stock</a>
+        </nav>
+
+
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>This is an E-Stock Market App</h3>
+            <h1>Know what you own,and know why you own it.</h1>
+        </div>
+        <div class="image">
+            <img src="../../assets/img/stock-img.webp" class="img-responsive">
+        </div>
+    </section>
+    <div class="modal fade" id="addStock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: large;font-weight: bold;">Add new Stock</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="font-size: large;">
+
+                    <form [formGroup]="stkDetail">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Company Code </label>
+                            <h6>Company Code must be the correct ISIN NUmber only!</h6>
+                            <input type="text" formControlName="code" class="form-control" id="code"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Stock Price </label>
+                            <input type="text" formControlName="stockPrice" class="form-control" id="stockPrice"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                (click)="addStock()">Add Stock</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addCompany" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: large;font-weight: bold;">Add new
+                        Company</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="font-size: large;">
+
+                    <form [formGroup]="cmpDetail">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Company Code </label>
+                            <h6>Company Code must be the correct ISIN NUmber only!</h6>
+                            <input type="text" formControlName="code" class="form-control" id="code"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Company Name </label>
+                            <input type="text" formControlName="name" class="form-control" id="name"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Company CEO's Name </label>
+                            <input type="text" formControlName="ceo" class="form-control" id="ceo"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Company's Turnover (in Cr)</label>
+                            <input type="text" formControlName="turnover" class="form-control" id="turnover"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Company's Website </label>
+                            <input type="text" formControlName="website" class="form-control" id="website"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Stock Exchange Listed In </label>
+                            <input type="text" formControlName="exchange" class="form-control" id="exchange"
+                                style="height: 40px;font-size: 14px;" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                (click)="addCompany()">Add Company</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

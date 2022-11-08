@@ -1,0 +1,5 @@
+
+spring.data.mongodb.database=mydatabase
+spring.data.mongodb.uri=mongodb://localhost:27017/mydatabase
+spring.application.name=etock_company_registration
+server.port=9091

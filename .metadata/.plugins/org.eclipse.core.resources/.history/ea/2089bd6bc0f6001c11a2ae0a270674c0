@@ -1,0 +1,58 @@
+package com.example.companyreg.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.companyreg.entities.Company;
+import com.example.companyreg.repository.CompanyRepository;
+
+
+@RestController
+@RequestMapping("/register")
+
+public class RegController {
+	@Autowired
+	CompanyRepository repository;
+	
+	@GetMapping
+	public Iterable<Company> getCompanies()
+	{
+		return repository.findAll();
+	}
+	
+	@PostMapping
+	public Company create(@RequestBody Company company)
+	{
+		return repository.save(company);
+	}
+	
+	@PutMapping
+	public Company update(@RequestBody Company company)
+	{
+		return repository.save(company);
+	}
+	
+	@GetMapping("/{id}")
+	public Company getProduct(@PathVariable Long id)
+	{
+		Optional<Company> p=repository.findById(id);
+		Company prod=p.get();
+		return prod;
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteProduct(@PathVariable Long id)
+	{
+		repository.deleteById(id);
+	}
+
+}

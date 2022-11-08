@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <header class="header">
+        <a href="#" class="logo">
+            <!-- <i class="fas fa-heartbeat"></i> --> E-Stock Market
+        </a>
+        <nav class="navbar">
+
+            <a class="btn btn-light" style="color: black;" routerLink="/add">Home</a>
+        </nav>
+    </header>
+    <section class="home" id="home">
+    <div class="content" style="text-align: center">
+        <h1>List of all Companies</h1>
+    </div>
+    </section>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="table-responsive-lg">
+        <table class="table table-hover table-bordered bg-info w-100 mx-auto">
+            <thead class="thead-dark" style="font-size: large;text-align: center;">
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">CEO</th>
+                    <th scope="col">Turnover</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">stockExchange</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center; font-size: 12px;">
+                <tr *ngFor="let cmp of cmpList" class="table-primary">
+                    <td>{{cmp.companyCode}}</td>
+                    <td>{{cmp.companyName}}</td>
+                    <td>{{cmp.companyCEO}}</td>
+                    <td>{{cmp.companyTurnover}}</td>
+                    <td>{{cmp.companyWebsite}}</td>
+                    <td>{{cmp.stockExchange}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
